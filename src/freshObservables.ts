@@ -3,19 +3,13 @@ import {Observable} from 'rxjs';
 
 let source = new Observable( (observer: any) => {
   // console.log("Fresh observables ", observer);
-  observer.next("Soemthing weird")
+  observer.next("Soemthing weird"),
+  observer.next("Another thing, I kind of get it now");
+  observer.complete();
 });
 
-source.subscribe(
-  (val : any) => {
-    console.log("Fresh New OBS ", val)
-  },
-  (err) => {
-    console.error(err)
-  },
-  () => {
-    console.log("Fresh Observable Completed")
-  }
-)
+let freshObservableExports = {
+  dummySource : source
+}
 
-export default source;
+export default freshObservableExports

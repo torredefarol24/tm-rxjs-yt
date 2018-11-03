@@ -2,11 +2,15 @@ import { fromEvent } from 'rxjs';
 import {Observable} from 'rxjs';
 import { from } from 'rxjs';
 import fetchCalls from "./ajax";
+import FreshObservables from './freshObservables';
+import PromiseObservables from './promiseObservables';
+
 
 var message = document.getElementById("message");
 var numbersOutput = document.getElementById("outputNumbers");
 var todosOutput = document.getElementById("outputTodos");
-
+var promiseOutput = document.getElementById("promiseOutput");
+var freshObsOutput = document.getElementById("freshObsOutput");
 
 
 var theBtn = document.getElementById("theBtn");
@@ -106,7 +110,7 @@ setSteam.subscribe(
     // console.log("Set Stream ", data)
   },
   (err) => {
-    console.log(err);
+    console.error(err);
     message.innerHTML = err;
   },
   () => {
@@ -116,5 +120,46 @@ setSteam.subscribe(
 )
 
 
-import source from './freshObservables';
-let freshSource = source;
+let dummySource = FreshObservables.dummySource;
+dummySource.subscribe( 
+  (data: any) => {
+    let chunks = [];
+    chunks.push(data);
+
+    chunks.forEach( item => {
+      var liElem = document.createElement("li");
+      var textNode = document.createTextNode(item);
+      liElem.appendChild(textNode)
+      freshObsOutput.appendChild(liElem)
+    })
+    // console.log( chunks) 
+  },
+  (err) => {
+    console.error(err);
+    message.innerHTML = err;
+  }, 
+  () => {
+    console.log("Set stream completed");
+    message.innerHTML = "Set Stream Completed"
+  }
+)
+
+
+let dummyPromiseSource = PromiseObservables.dummyPromise;
+dummyPromiseSource.then( (data: any) => {
+  console.log("promise observable returning this ", data);
+})
+
+let serverPromise = PromiseObservables.serverPromise;
+serverPromise.then( (data: any) => {
+  // console.log("Server Promise Resolves this ", data);
+
+  data.forEach( item => {
+    var liElem = document.createElement("li");
+    var textNode = document.createTextNode(item.username);
+    liElem.appendChild(textNode)
+    promiseOutput.appendChild(liElem)
+  })
+
+})
+
