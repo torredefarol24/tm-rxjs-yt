@@ -4,17 +4,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>RxJs Example</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" > -->
 </head>
 <body>
   <div class='container'>
-    <h3> RxJs Example</h3>
-    <p id="message"></p>
-    <button id='theBtn' class='btn btn-primary'>Test This</button>
-    <input type='text' id='theInput' placeholder='Test This Input' />
-    <ul id='output'>
+    <h1> RxJs Example</h1>
+    <p> Status : <span id="message" style="font-size: 24px"></span> </p>
+    <div class='col-md-12'>
+      <div class='row'>
+        <h4>Event Based Observables</h4>
+      </div>
+      <div class='row'>
+        <div class='col-md-6'>
+          <button id='theBtn' class='btn btn-success'>Test This</button>
+        </div>
+        <div class='col-md-6'>
+          <label>Type something here</label>
+          <input type='text' id='theInput' placeholder='Test This Input' />
+        </div>
+      </div>
+    </div>
 
-    </ul>
+    <div class='row' style="margin-top: 40px">
+      <div class='col-md-6'>
+        <h5>Number Stream / Array Stream</h5>
+        <ul id='outputNumbers'>
+        </ul>
+      </div>
+      <div class='col-md-6'>
+        <h5> Number Stream / Array from Fetch-Call </h5>
+        <ul id='outputTodos'>
+        </ul>
+      </div>
+    </div>
+
+    <div class='row' style="margin-top: 40px">
+      <div></div>
+    </div>
+    
   </div>
   <script src='/app.bundle.js'></script>
 </body>
