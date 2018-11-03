@@ -1,12 +1,9 @@
-import {Observable} from 'rxjs';
-
 let promiseConfig = function(resolve, reject){
   console.log("Creating Promise");
 
   setTimeout( () => {
     resolve("Dummy Data ")
   }, 2500);
-
 }
 
 let dummyPromise = new Promise(promiseConfig)
@@ -22,10 +19,9 @@ let serverPromise = new Promise(apiPromimseConfig)
 
 
 
-
 let promiseExports = {
   dummyPromise : dummyPromise,
-  serverPromise : serverPromise
+  serverPromise : serverPromise,
 }
 
 export default promiseExports

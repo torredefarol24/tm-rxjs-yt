@@ -1,9 +1,9 @@
 import { fromEvent } from 'rxjs';
-import {Observable} from 'rxjs';
 import { from } from 'rxjs';
 import fetchCalls from "./ajax";
 import FreshObservables from './freshObservables';
 import PromiseObservables from './promiseObservables';
+import {interval} from 'rxjs';
 
 
 var message = document.getElementById("message");
@@ -12,6 +12,7 @@ var todosOutput = document.getElementById("outputTodos");
 var promiseOutput = document.getElementById("promiseOutput");
 var freshObsOutput = document.getElementById("freshObsOutput");
 
+//EVENT.HTML
 
 var theBtn = document.getElementById("theBtn");
 var btnStream = fromEvent(theBtn, "click");
@@ -53,7 +54,7 @@ inputStream.subscribe(
 )
 
 
-
+//FROM.HTML
 
 var numbers = [35,24,36,47,15,75,63,52,84]
 var numberStream = from(numbers);
@@ -120,6 +121,8 @@ setSteam.subscribe(
 )
 
 
+//SCRATCH.HTML
+
 let dummySource = FreshObservables.dummySource;
 dummySource.subscribe( 
   (data: any) => {
@@ -145,6 +148,9 @@ dummySource.subscribe(
 )
 
 
+
+//PROMISE.HTML
+
 let dummyPromiseSource = PromiseObservables.dummyPromise;
 let dummyPromiseObservable = from(dummyPromiseSource)
 
@@ -161,7 +167,6 @@ dummyPromiseObservable.subscribe(
     message.innerHTML = "Dummy Promise Completed"
   }
 )
-
 
 
 let serverPromise = PromiseObservables.serverPromise;
@@ -186,5 +191,6 @@ serverPromiseObservable.subscribe(
     message.innerHTML = "Server Promise Completed"
   }
 )
+
 
 
