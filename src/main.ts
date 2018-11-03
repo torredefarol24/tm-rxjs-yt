@@ -103,7 +103,7 @@ var setSteam = from(newSet);
 
 setSteam.subscribe(
   (data : any) => {
-    console.log("Set Stream ", data)
+    // console.log("Set Stream ", data)
   },
   (err) => {
     console.log(err);
@@ -115,3 +115,6 @@ setSteam.subscribe(
   }
 )
 
+
+import source from './freshObservables';
+let freshSource = source;
