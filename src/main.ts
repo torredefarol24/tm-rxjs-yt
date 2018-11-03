@@ -146,20 +146,45 @@ dummySource.subscribe(
 
 
 let dummyPromiseSource = PromiseObservables.dummyPromise;
-dummyPromiseSource.then( (data: any) => {
-  console.log("promise observable returning this ", data);
-})
+let dummyPromiseObservable = from(dummyPromiseSource)
+
+dummyPromiseObservable.subscribe(
+  (data : any) => {
+    console.log("Dummy Promise Observable using fromPromise ", data)
+  },
+  (err) => {
+    console.error(err);
+    message.innerHTML = err;
+  },
+  () => {
+    console.log("Dummy Promise completed");
+    message.innerHTML = "Dummy Promise Completed"
+  }
+)
+
+
 
 let serverPromise = PromiseObservables.serverPromise;
-serverPromise.then( (data: any) => {
-  // console.log("Server Promise Resolves this ", data);
+let serverPromiseObservable = from(serverPromise);
 
-  data.forEach( item => {
-    var liElem = document.createElement("li");
-    var textNode = document.createTextNode(item.username);
-    liElem.appendChild(textNode)
-    promiseOutput.appendChild(liElem)
-  })
+serverPromiseObservable.subscribe(
+  (data : any) => {
+    // console.log("Dummy Promise Observable using fromPromise ", data)
+    data.forEach( item => {
+      var liElem = document.createElement("li");
+      var textNode = document.createTextNode(item.username);
+      liElem.appendChild(textNode)
+      promiseOutput.appendChild(liElem)
+    })
+  },
+  (err) => {
+    console.error(err);
+    message.innerHTML = err;
+  },
+  () => {
+    console.log("Server Promise completed");
+    message.innerHTML = "Server Promise Completed"
+  }
+)
 
-})
 
