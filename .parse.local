@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "rxjsStaticPages"
+    },
+    "rxjsStaticPages": {
+      "applicationId": "BJLXRN7YeCP2k8xS2TrPmpmF44RclOU0oh7D2Jtg"
+    }
+  }
+}

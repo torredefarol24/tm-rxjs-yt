@@ -10,12 +10,17 @@ let dummyPromise = new Promise(promiseConfig)
 
 
 
+
+
 let apiPromimseConfig = function(resolve, reject){
   let endpointURL = "https://jsonplaceholder.typicode.com/users"
   fetch(endpointURL).then(users => resolve(users.json()));
 }
 
 let serverPromise = new Promise(apiPromimseConfig)
+
+
+
 
 
 

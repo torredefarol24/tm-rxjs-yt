@@ -1,13 +1,15 @@
 {
-  "name": "rxjsExample",
+  "name": "rxjs-example",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "webpack_dev": "webpack-dev-server --mode development --config webpack.config.js",
-    "webpack_prod": "webpack"
+    "start-app" : "node server.js",
+    "webpack-dev": "webpack-dev-server --mode development --config webpack.config.js",
+    "webpack-build": "webpack"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "rxjs": "^6.3.3",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6",
